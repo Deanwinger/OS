@@ -13,6 +13,8 @@ int main( int argc, char **argv)
     listenfd = Socket(AF_INET, SOCK_STREAM, 0);
 
     bzero(&servaddr, sizeof(servaddr))
+
+    
 }
 
 
