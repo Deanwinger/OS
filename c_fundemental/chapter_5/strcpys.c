@@ -27,6 +27,6 @@ void strcpypp(char *s, char *t)
 
 void strcpypf(char *s, char *t)
 {
-    while (*s = *t)
+    while (*s++ = *t++)
         ;
 }
