@@ -32,6 +32,17 @@
 - 进程捆绑非通配IP地址到套接字的常见例子是在为多个组织提供web服务器的主机上;
 - 从bind函数返回的一个常见错误是EADDRINUSE("adress already in use");
 
+## 4.5 listen 函数
+~~~
+#include<sys/socket.h>
+
+int listen(int sockfd, int backlog)
+~~~
+- 仅由TCP服务器调用， 它做两件事
+1. listen函数把一个未连接的套接字转换成一个被动套接字；
+2. 第二个参数规定了内核应该为相应套接字排队的最大连接个数；
+    - (1) 未完成连接队列， 每个这样的SYN分节对应其中的一项：已有某个客户发出并到达服务器， 而服务器正在等待完成相应的TCP三次握手过程， 这些套接字处于SYN_RCVD状态；
+    - (2) 已完成连接队列， 每个已完成TCP三路握手的客户对应其中的一项， 这些套接字处于ESTABLISHED状态；
 
 
-###### 4.5 to be continued
+###### 4.6 to be continued
