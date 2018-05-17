@@ -44,5 +44,17 @@ int listen(int sockfd, int backlog)
     - (1) 未完成连接队列， 每个这样的SYN分节对应其中的一项：已有某个客户发出并到达服务器， 而服务器正在等待完成相应的TCP三次握手过程， 这些套接字处于SYN_RCVD状态；
     - (2) 已完成连接队列， 每个已完成TCP三路握手的客户对应其中的一项， 这些套接字处于ESTABLISHED状态；
 
+## 4.6 accept 函数
+- 由TCP服务器调用， 从已完成连接队列发布会下一个已完成连接， 如果已完成连接队列已经为空， 那么进程被投入睡眠；
+~~~
+#include<sys/socket.h>
+
+int accept(int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen)
+
+(1) cliaddr 和 addrlen 用来返回已连接的而对端进程
+(客户)的协议地址；
+(2) 如果accept返回成功， 那么其返回值是由内核自动生成的一个全新的描述符， 代表与所返回客户的TCP连接；
+(3) 本函数最多返回三个值，如果我们对cliaddr， 或者addrlen置为空指针；
+~~~
 
 ###### 4.6 to be continued
